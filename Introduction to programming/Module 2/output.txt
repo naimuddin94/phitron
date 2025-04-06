@@ -1,1 +1,1 @@
-sum: 30
+reminder: 2

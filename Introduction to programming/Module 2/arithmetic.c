@@ -2,9 +2,9 @@
 
 int main(){
 
-    int a = 10;
-    int b = 20;
-    int sum = a + b;
-    printf("sum: %d", sum);
+    float a = 7;
+    int b = 2;
+    float div = a / b;
+    printf("sum: %.2f", div);
     return 0;
 }
