@@ -2,15 +2,13 @@
 
 int main(){
     int n;
+    int x;
 
     scanf("%d", &n);
 
-    if(n<2){
-        printf("%d\n", -1);
-    }
-
-    for(int i=2; i<=n; i+=2){
-        printf("%d\n", i);
+    for(int i=0; i<=n; i++){
+        scanf("%d", &x);
+        printf("%d\n", x);
     }
     
     return 0;
