@@ -16,7 +16,6 @@ int main(){
     }
 
     int c[x+y];
-    int res[x+y];
 
     for(int i=0; i<x; i++){
         c[i] = a[i];
