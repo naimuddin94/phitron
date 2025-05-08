@@ -1,0 +1,3 @@
+Address of a in main: 000000000061FE4C
+Inside function: 000000000061FE4C
+Address of a in main: 000000000061FE4C
