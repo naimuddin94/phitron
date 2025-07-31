@@ -119,15 +119,41 @@ int count_leaf_nodes(Node *root)
     return l + r;
 }
 
+int max_height(Node *root)
+{
+    if (root == NULL)
+    {
+        return 0;
+    }
+    if (root->left == NULL && root->right == NULL)
+    {
+        return 0;
+    }
+    int l = max_height(root->left);
+    int r = max_height(root->right);
+    return max(l, r) + 1;
+}
+
+int sumOfLeftLeaves(Node *root)
+{
+    if (root == NULL)
+        return 0;
+
+    if (root->left && root->left->left == NULL && root->left->right == NULL)
+        return root->left->val;
+
+    int l = sumOfLeftLeaves(root->left);
+    int r = sumOfLeftLeaves(root->right);
+
+    return l + r;
+}
+
 int main()
 {
 
     Node *root = input_tree();
 
-    level_order(root);
-
-    cout << endl
-         << count_leaf_nodes(root) << endl;
+    cout << sumOfLeftLeaves(root) << endl;
 
     return 0;
 }
