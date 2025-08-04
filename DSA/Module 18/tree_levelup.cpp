@@ -37,22 +37,42 @@ void level_order(Node *root)
     }
 }
 
+Node* convert(vector<int> arr, int l, int r){
+    if(l > r) return NULL;
+
+    int mid = (l+r) / 2;
+
+    Node *root = new Node(arr[mid]);
+
+    Node *leftNode = convert(arr, l, mid-1);
+
+    Node *rightNode = convert(arr, mid+1, r);
+
+    root->left = leftNode;
+    root->right = rightNode;
+
+    return root;
+}
+
 int main()
 {
-    Node *root = new Node(10);
-    Node *a = new Node(20);
-    Node *b = new Node(30);
-    Node *c = new Node(40);
-    Node *d = new Node(50);
-    Node *e = new Node(60);
+    int n;
+    cin >> n;
 
-    root->left = a;
-    root->right = b;
-    a->left = c;
-    b->left = d;
-    b->right = e;
+    vector<int> arr(n);
+
+    for (int i = 0; i < n; i++)
+    {
+        int val;
+        cin >> val;
+        arr[i] = val;
+    }
+
+    Node *root = convert(arr, 0, n-1);
+
 
     level_order(root);
+    
 
     return 0;
 }

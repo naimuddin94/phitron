@@ -56,29 +56,52 @@ Node *input_tree()
     return root;
 }
 
-bool search(Node *root, int x){
-    if(root == NULL) return false;
+bool search(Node *root, int x)
+{
+    if (root == NULL)
+        return false;
 
-    if(root->val == x) return true;
+    if (root->val == x)
+        return true;
 
-    if(root->val > x){
-         return search(root->left, x);
-    }else{
+    if (root->val > x)
+    {
+        return search(root->left, x);
+    }
+    else
+    {
         return search(root->right, x);
+    }
+}
+
+void level_order(Node *root)
+{
+    if (root == NULL)
+        return;
+
+    queue<Node *> q;
+    q.push(root);
+
+    while (!q.empty())
+    {
+        Node *f = q.front();
+        q.pop();
+        
+        cout << f->val << " ";
+
+        if (f->left)
+            q.push(f->left);
+
+        if (f->right)
+            q.push(f->right);
     }
 }
 
 int main()
 {
     Node *root = input_tree();
-    int tar;
-    cin >> tar;
 
-    if(search(root, tar)){
-        cout << "Found" << endl;
-    }else{
-        cout << "Not Found" << endl;
-    }
+    level_order(root);
 
     return 0;
 }
