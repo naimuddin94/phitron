@@ -1,21 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int main()
+void insert_head(vector<int> &v, int val)
 {
-    int n;
-    cin >> n;
-
-    vector<int> v(n);
-
-    for (int i = 0; i < n; i++)
-    {
-        cin >> v[i];
-    }
-
-    int val;
-    cin >> val;
-
     v.push_back(val);
 
     int curr = v.size() - 1;
@@ -33,12 +20,62 @@ int main()
         }
         curr = par;
     }
+}
 
-    for (int i : v)
+void delete_head(vector<int> &v)
+{
+    if (v.empty())
+        return;
+
+    v[0] = v.back();
+    v.pop_back();
+
+    int curr = 0;
+    int n = v.size();
+
+    while (true)
     {
-        cout << i << " ";
+        int left = curr * 2 + 1;
+        int right = curr * 2 + 2;
+        int largest = curr;
+
+        if (left < n && v[left] > v[largest])
+        {
+            largest = left;
+        }
+        if (right < n && v[right] > v[largest])
+        {
+            largest = right;
+        }
+
+        if (largest == curr)
+            break;
+
+        swap(v[curr], v[largest]);
+        curr = largest;
     }
-    
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    vector<int> v;
+
+    for (int i = 0; i < n; i++)
+    {
+        int val;
+        cin >> val;
+        insert_head(v, val);
+    }
+
+    delete_head(v);
+
+    for (int it : v)
+    {
+        cout << it << " ";
+    }
 
     return 0;
 }
