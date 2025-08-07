@@ -1,1 +1,5 @@
-10 20 30 40 50 
+akib 7 98
+hasib 3 78
+nakib 4 67
+sakib 2 35
+rakib 15 35
