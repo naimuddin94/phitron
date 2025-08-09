@@ -1,0 +1,2 @@
+int pos;
+    // cin >> pos;
